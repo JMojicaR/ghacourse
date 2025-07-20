@@ -1,0 +1,13 @@
+name: HelloWorld
+description: A simple hello world example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say_hello_world_jpb:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Echo Hello World
+        run: echo "Hello, World!"
