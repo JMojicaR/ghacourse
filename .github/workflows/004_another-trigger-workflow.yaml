@@ -1,0 +1,13 @@
+name: another-trigger-workflow
+on:
+  # trigger workflow on push to master branch
+  workflow_run:
+    workflows: ["first-param-workflow"]
+    types:
+      - completed
+jobs:
+  echo-hi-all:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo hi all
+        run: echo "hi all"
