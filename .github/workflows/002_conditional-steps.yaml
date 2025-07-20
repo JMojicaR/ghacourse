@@ -29,7 +29,6 @@ jobs:
           exit 1
       
       - name: Step 4 - I will Never Execute
-        if: ${{ failure() }}
         run: |
           echo "This step will never run."
 
