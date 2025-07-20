@@ -1,0 +1,25 @@
+name: first-param-workflow
+description: This is a sample pipeline that demonstrates how to use parameters in a workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'User Name'
+        required: true
+        default: 'Javier'
+        type: string
+      age:
+        description: 'Age'
+        required: true
+        type: number
+      
+
+jobs:
+  echo-username-age:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo username and age
+      - run: |
+          echo "Hello, ${{ inputs.username }}!" 
+          echo "You are ${{ inputs.age }} years old."
