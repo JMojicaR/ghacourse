@@ -1,0 +1,39 @@
+name: Conditional Steps
+description: This is a sample pipeline that demonstrates how to use conditional steps in a pipeline.
+
+on:
+  workflow_dispatch::
+    
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Step 1 - Exit code 0
+        id: successful_step
+        run: |
+          echo "This is a successful step."
+          echo "exit code 0"
+          exit 0
+        shell: bash
+
+      - name: Step 2 - execite if previous step succeeded
+        if: ${{ success() }}
+        run: |
+          echo "This step runs only if the previous step was successful."
+        
+      - name: Step 3 - I am failling
+        run: |
+          echo "This step will fail."
+          echo "exit code 1"
+          exit 1
+      
+      - name: Step 4 - I will Never Execute
+        if: ${{ failure() }}
+        run: |
+          echo "This step will never run."
+
+      - name: Step 5 - Execute on Workflow failure
+        if: ${{ failure() }}
+        run: |
+          echo "This step will run only if the workflow fails." 
