@@ -2,7 +2,7 @@ name: Conditional Steps
 description: This is a sample pipeline that demonstrates how to use conditional steps in a pipeline.
 
 on:
-  workflow_dispatch::
+  workflow_dispatch:
     
 jobs:
   example_job:
